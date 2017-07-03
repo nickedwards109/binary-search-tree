@@ -18,7 +18,7 @@ class TreeTest < Minitest::Test
     assert_equal(2, new_tree.insert(50, "Hannibal Buress: Animal Furnace"))
   end
 
-  def test_tree_includes_node
+  def test_tree_includes_a_node
     assert @tree.include?(61)
     assert @tree.include?(16)
     assert @tree.include?(50)
@@ -26,5 +26,10 @@ class TreeTest < Minitest::Test
 
     blank_tree = Tree.new
     refute blank_tree.include?(1)
+  end
+
+  def test_tree_returns_depth_of_a_node
+    assert_equal(1, @tree.depth_of(92))
+    assert_equal(2, @tree.depth_of(50))
   end
 end
