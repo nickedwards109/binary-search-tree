@@ -36,4 +36,8 @@ class TreeTest < Minitest::Test
   def test_tree_finds_title_and_score_of_node_with_max_score
     assert_equal({"Sharknado 3" => 92}, @tree.max)
   end
+
+  def test_tree_finds_title_and_score_of_node_with_min_score
+    assert_equal({"Johnny English" => 16}, @tree.min)
+  end
 end
