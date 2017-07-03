@@ -115,4 +115,20 @@ class Tree
       recursive_max(node.right_child)
     end
   end
+
+  def min
+    if self.root.left_child.nil?
+      return {self.root.title => self.root.score}
+    else
+      recursive_max(self.root.left_child)
+    end
+  end
+
+  def recursive_max(node)
+    if node.left_child.nil?
+      return {node.title => node.score}
+    else
+      recursive_max(node.left_child)
+    end
+  end
 end
