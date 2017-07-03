@@ -94,4 +94,25 @@ class Tree
       recursive_depth_of(node.left_child, score, depth)
     end
   end
+
+  # This method handles the first check to find the node with the maximum score.
+  # If the root node has no right_child node, then return the formatted title
+  # and score of the root node. Otherwise, call a recursive method that checks
+  # successive right children until it finds a node with no right child,
+  # indicating the node with the maximum score.
+  def max
+    if self.root.right_child.nil?
+      return {self.root.title => self.root.score}
+    else
+      recursive_max(self.root.right_child)
+    end
+  end
+
+  def recursive_max(node)
+    if node.right_child.nil?
+      return {node.title => node.score}
+    else
+      recursive_max(node.right_child)
+    end
+  end
 end
