@@ -67,4 +67,31 @@ class Tree
       return false
     end
   end
+
+  # This method handles the first check to find the depth of a score.
+  # If the root node has that score, this method returns 0 without doing any
+  # recursion. Otherwise, it will compare the root node's score with the passed
+  # in score, and then call a recursive method that starts by comparing one of
+  # the root node's children with the passed in score.
+  def depth_of(score)
+    return 0 if self.root.score == score
+    if score > self.root.score
+      recursive_depth_of(self.root.right_child, score, 0)
+    elsif score < self.root.score
+      recursive_depth_of(self.root.left_child, score, 0)
+    end
+  end
+
+  def recursive_depth_of(node, score, depth)
+    depth += 1
+    if node.nil?
+      return nil
+    elsif score == node.score
+      return depth
+    elsif score > node.score
+      recursive_depth_of(node.right_child, score, depth)
+    elsif score < node.score
+      recursive_depth_of(node.left_child, score, depth)
+    end
+  end
 end
