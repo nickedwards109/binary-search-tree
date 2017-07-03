@@ -23,5 +23,8 @@ class TreeTest < Minitest::Test
     assert @tree.include?(16)
     assert @tree.include?(50)
     refute @tree.include?(42)
+
+    blank_tree = Tree.new
+    refute blank_tree.include?(1)
   end
 end

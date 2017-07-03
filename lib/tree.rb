@@ -43,4 +43,28 @@ class Tree
       recursive_insert(current_node.left_child, new_node, depth)
     end
   end
+
+  # This method handles the first check to see if the tree includes a node
+  # with a certain score. If there is no root node, this method returns false
+  # without doing any recursion. Otherwise, it will call a recursive method that
+  # starts by comparing the root node score with the passed in score.
+  def include?(score)
+    if self.root.nil?
+      return false
+    else
+      recursive_include?(self.root, score)
+    end
+  end
+
+  def recursive_include?(node, score)
+    if score == node.score
+      return true
+    elsif score > node.score && !node.right_child.nil?
+      recursive_include?(node.right_child, score)
+    elsif score < node.score && !node.left_child.nil?
+      recursive_include?(node.left_child, score)
+    else
+      return false
+    end
+  end
 end
